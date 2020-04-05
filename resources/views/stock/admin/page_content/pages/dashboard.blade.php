@@ -8,6 +8,12 @@
 
     <div class="container-fluid">
         <!-- Info boxes -->
+
+
+
+
+
+
         <div class="row">
             <div class="col-12 col-sm-6 col-md-2">
                 <div class="info-box">
@@ -101,21 +107,6 @@
         </div>
         <!-- /.row -->
 
-        <!-- Main row -->
-        <div class="row">
-
-
-
-
-
-
-        </div>
-        <!-- /.row -->
-
-
-
-
-
 
 
 
@@ -197,52 +188,17 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Chart</h3>
+                        <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                    </div>
                     <div class="card-body">
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        {{--<div id="container" class="chart"></div>--}}
 
                         <div id="curve_chart" style=" height: 500px"></div>
 
@@ -260,7 +216,7 @@
                             function drawChart() {
                                 var data = google.visualization.arrayToDataTable([
                                     ['Date', 'High Price', 'Low Price', 'Close Price'],
-                                    <?php foreach ($stockData as $dt){?>
+                                        <?php foreach ($stockData as $dt){?>
                                     ['{{$dt->date}}',     {{$dt->high_price}},      {{$dt->low_price}},      {{$dt->close_price}}],
                                     <?php }?>
                                 ]);
@@ -276,138 +232,6 @@
                                 chart.draw(data, options);
                             }
                         </script>
-
-
-
-
-
-
-
-
-
-
-
-
-                        {{--<script src="https://code.highcharts.com/stock/highstock.js"></script>--}}
-                        {{--<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>--}}
-                        {{--<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>--}}
-
-
-                        {{--<div id="container" style="height: 400px; min-width: 310px"></div>--}}
-
-
-                        {{--<script>--}}
-                            {{--$(document).ready(function(){--}}
-                               {{--var options = {--}}
-                                   {{--chart:{--}}
-                                       {{--renderTo: 'container',--}}
-                                       {{--type: 'line',--}}
-                                   {{--},--}}
-                                   {{--series:[{}]--}}
-                               {{--};--}}
-
-                               {{--$.getJSON('stock.admin.page_content.json_data.test',function (data) {--}}
-                                   {{--options.series[0].data = data;--}}
-                                   {{--var chart = new Highcharts.Chart(options);--}}
-                               {{--});--}}
-                            {{--});--}}
-                        {{--</script>--}}
-
-
-
-
-
-
-
-                        {{--<script>--}}
-
-                            {{--var seriesOptions = [],--}}
-                                {{--seriesCounter = 0,--}}
-                                {{--names = ['MSFT', 'AAPL', 'GOOG'];--}}
-
-                            {{--/**--}}
-                             {{--* Create the chart when all data is loaded--}}
-                             {{--* @returns {undefined}--}}
-                             {{--*/--}}
-                            {{--function createChart() {--}}
-
-                                {{--Highcharts.stockChart('container', {--}}
-
-                                    {{--rangeSelector: {--}}
-                                        {{--selected: 4--}}
-                                    {{--},--}}
-
-                                    {{--yAxis: {--}}
-                                        {{--labels: {--}}
-                                            {{--formatter: function () {--}}
-                                                {{--return (this.value > 0 ? ' + ' : '') + this.value + '%';--}}
-                                            {{--}--}}
-                                        {{--},--}}
-                                        {{--plotLines: [{--}}
-                                            {{--value: 0,--}}
-                                            {{--width: 2,--}}
-                                            {{--color: 'silver'--}}
-                                        {{--}]--}}
-                                    {{--},--}}
-
-                                    {{--plotOptions: {--}}
-                                        {{--series: {--}}
-                                            {{--compare: 'percent',--}}
-                                            {{--showInNavigator: true--}}
-                                        {{--}--}}
-                                    {{--},--}}
-
-                                    {{--tooltip: {--}}
-                                        {{--pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',--}}
-                                        {{--valueDecimals: 2,--}}
-                                        {{--split: true--}}
-                                    {{--},--}}
-
-                                    {{--series: seriesOptions--}}
-                                {{--});--}}
-                            {{--}--}}
-
-                            {{--function success(data) {--}}
-                                {{--var name = this.url.match(/(msft|aapl|goog)/)[0].toUpperCase();--}}
-                                {{--var i = names.indexOf(name);--}}
-                                {{--seriesOptions[i] = {--}}
-                                    {{--name: name,--}}
-                                    {{--data: data--}}
-                                {{--};--}}
-
-                                {{--// As we're loading the data asynchronously, we don't know what order it--}}
-                                {{--// will arrive. So we keep a counter and create the chart when all the data is loaded.--}}
-                                {{--seriesCounter += 1;--}}
-
-                                {{--if (seriesCounter === names.length) {--}}
-                                    {{--createChart();--}}
-                                {{--}--}}
-                            {{--}--}}
-
-                            {{--Highcharts.getJSON(--}}
-                                {{--'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/msft-c.json',--}}
-                                {{--success--}}
-                            {{--);--}}
-                            {{--Highcharts.getJSON(--}}
-                                {{--'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/aapl-c.json',--}}
-                                {{--success--}}
-                            {{--);--}}
-                            {{--Highcharts.getJSON(--}}
-                                {{--'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/goog-c.json',--}}
-                                {{--success--}}
-                            {{--);--}}
-                        {{--</script>--}}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -440,6 +264,28 @@
 
 
 
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Chart</h3>
+                    <div class="card-body">
+
+
+
+
+
+                        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+                        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+                        <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+
+
+
+
+
+
+
+                        <div id="container" class="chart"  style=" min-height: 500px"></div>
 
 
 
@@ -457,14 +303,125 @@
 
 
 
+                        <script>
+
+                        var seriesOptions = [],
+                        seriesCounter = 0,
+                        names = ['MSFT', 'AAPL', 'GOOG'];
+
+                        /**
+                        * Create the chart when all data is loaded
+                        * @returns {undefined}
+                        */
+                        function createChart() {
+
+                        Highcharts.stockChart('container', {
+
+                            rangeSelector: {
+                                buttons: [{
+                                    type: 'day',
+                                    count: 1,
+                                    text: '24h'
+                                }, {
+                                    type: 'week',
+                                    count: 1,
+                                    text: '1w'
+                                }, {
+                                    type: 'month',
+                                    count: 1,
+                                    text: '1m'
+                                }, {
+                                    type: 'month',
+                                    count: 6,
+                                    text: '6m'
+                                }, {
+                                    type: 'year',
+                                    count: 1,
+                                    text: '1y'
+                                }, {
+                                    type: 'all',
+                                    text: 'All'
+                                }],
+                                selected: 1
+                            },
+
+                        yAxis: {
+                        labels: {
+                        formatter: function () {
+                        return (this.value > 0 ? ' + ' : '') + this.value + '%';
+                        }
+                        },
+                        plotLines: [{
+                        value: 0,
+                        width: 2,
+                        color: 'silver'
+                        }]
+                        },
+
+                        plotOptions: {
+                        series: {
+                        compare: 'percent',
+                        showInNavigator: true
+                        }
+                        },
+
+                        tooltip: {
+                        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+                        valueDecimals: 2,
+                        split: true
+                        },
+
+                        series: seriesOptions
+                        });
+                        }
+
+                        function success(data) {
+                            alert(data);
+                        var name = this.url.match(/(msft|aapl|goog)/)[0].toUpperCase();
+                        var i = names.indexOf(name);
+                        seriesOptions = {
+                        name: name,
+                        data: data
+                        };
+
+                        // As we're loading the data asynchronously, we don't know what order it
+                        // will arrive. So we keep a counter and create the chart when all the data is loaded.
+                        seriesCounter += 1;
+
+                        if (seriesCounter === names.length) {
+                        createChart();
+                        }
+                        }
+
+                        Highcharts.getJSON(
+                        // 'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/msft-c.json',
+                        'http://127.0.0.1:8000/open',
+                        success
+                        );
+                        Highcharts.getJSON(
+                        // 'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/aapl-c.json',
+                        'http://127.0.0.1:8000/high',
+                        success
+                        );
+                        Highcharts.getJSON(
+                        // 'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/goog-c.json',
+                        'http://127.0.0.1:8000/low',
+                        success
+                        );
+                        </script>
 
 
 
 
 
 
-
-
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        </div>
 
 
 

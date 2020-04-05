@@ -15,8 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return view('stock.admin.page_content.json_data.test');
+Route::get('/open', function () {
+    return view('stock.admin.page_content.json_data.open_p');
+});
+
+Route::get('/high', function () {
+    return view('stock.admin.page_content.json_data.high_p');
+});
+
+Route::get('/low', function () {
+    return view('stock.admin.page_content.json_data.low_p');
+});
+
+Route::get('/close', function () {
+    return view('stock.admin.page_content.json_data.close_p');
 });
 
 Route::get('/dashboard','StockController@index');
